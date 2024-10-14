@@ -37,7 +37,7 @@ function getSetsByTheme(theme)
 {
     return new Promise((resolve, reject)=>{
         const foundSet = sets.filter((set)=>set.theme.toLowerCase().includes(theme.toLowerCase()));
-        if(foundSet) resolve(foundSet);
+        if(foundSet.length != 0) resolve(foundSet);
         else reject('Unable to find requested sets!')
     })
 }

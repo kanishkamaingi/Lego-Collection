@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/main.css" />
+  <title>Lego Collection</title>
+</head>
+
+<body>
+  <!-- navbar -->
+  <div class="navbar bg-base-100">
+    <div class="flex-1">
+      <a class="btn btn-ghost text-xl" href="/">Lego Collection</a>
+    </div>
+    <div class="flex-none">
+      <ul class="menu menu-horizontal px-1">
+        <li><a href="/about">About</a></li>
+        <li>
+          <details>
+            <summary>Theme</summary>
+            <ul class="bg-base-100 rounded-t-none p-2">
+              <li> <a href="/lego/sets?theme=Video Games">Video Games</a></li>
+              <li> <a href="/lego/sets?theme=Bionicle">Bionicle</a></li>
+              <li> <a href="/lego/sets?theme=Creator">Creator</a></li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container mx-auto">
+    <!-- hero -->
+    <div class="hero bg-base-200 h-400">
+      <div class="hero-content text-center">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold">WELCOME</h1>
+          <p class="py-6">
+            Unleash your inner builder and embark on a fascinating journey through the colorful realm of Lego.
+          </p>
+          <button class="btn btn-primary" onclick="window.location.href='/lego/sets'">Get Started</button>
+        </div>
+      </div>
+    </div>
+    <br>
+    <!-- grid system -->
+
+    <div class="container mx-auto flex justify-center">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- card1 -->
+        <div class="flex justify-center">
+          <div class="card w-50 bg-base-50 shadow">
+            <figure>
+              <img class="w-full" src="https://cdn.rebrickable.com/media/sets/1000629598-1.jpg" alt="Harry Potter Collection - PS4" />
+            </figure>
+            <div class="card-body">
+              <h2 class="card-title">Harry Potter Collection - PS4</h2>
+              <p>Includes remastered versions of Harry Potter: Years 1-4 and Harry Potter: Years 5-7.</p>
+              <div class="card-actions justify-end">
+                <button class="btn btn-primary" onclick="window.location.href='/lego/sets/1000629598-1'">View</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- card2 -->
+        <div class="flex justify-center">
+          <div class="card w-50 bg-base-50 shadow">
+            <figure>
+              <img class="w-full" src="https://cdn.rebrickable.com/media/sets/1000704832-13.jpg" alt="The Incredibles - PS4" />
+            </figure>
+            <div class="card-body">
+              <h2 class="card-title">The Incredibles - PS4</h2>
+              <p>Interactive game released in 2018.</p>
+              <div class="card-actions justify-end">
+                <button class="btn btn-primary" onclick="window.location.href='/lego/sets/1000704832-13'">View</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- card3 -->
+        <div class="flex justify-center">
+          <div class="card w-50 bg-base-50 shadow ">
+            <figure>
+              <img class="w-full" src="https://cdn.rebrickable.com/media/sets/1000643461-1.jpg" alt="Marvel Super Heroes 2 - Xbox One" />
+            </figure>
+            <div class="card-body">
+              <h2 class="card-title">Marvel Super Heroes 2 - Xbox One</h2>
+              <p>Action Game released in 2014.</p>
+              <div class="card-actions justify-end">
+                <button class="btn btn-primary" onclick="window.location.href='/lego/sets/1000643461-1'">View</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

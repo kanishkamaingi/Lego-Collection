@@ -1,5 +1,5 @@
 /********************************************************************************
-* WEB322 – Assignment 02
+ * WEB322 – Assignment 03
 *
 * I declare that this assignment is my own work in accordance with Seneca's
 * Academic Integrity Policy:
@@ -8,47 +8,49 @@
 *
 * Name: -KANISHKA Student ID: 155238223 Date: 30-09-2024
 *
-* Published URL: https://assignment-2-eosin-phi.vercel.app/
-*
+* Published URL:
 ********************************************************************************/
 const legoData = require("./modules/legoSets");
 legoData.initialize();
 const express = require('express'); 
 const app = express(); 
 const HTTP_PORT = 8080; 
+const path = require('path');
+require('pg'); // explicitly require the "pg" module
+const Sequelize = require('sequelize');
 
 app.listen(HTTP_PORT, () => console.log(`server listening on: ${HTTP_PORT}`));
+app.use(express.static('public'));
+
 
 app.get('/', (req, res) => {
-    res.send('Assignment 2: -Kanishka - 155238223');
+    res.sendFile(__dirname + '/views/home.html');
+});
+
+app.get('/about', (req, res) => {
+    res.sendFile(__dirname + '/views/about.html');
 });
 
 app.get('/lego/sets', (req, res) => {
-    let sets = legoData.getAllSets();
+    let sets = legoData.getSetsByTheme(req.query.theme || "");
     sets.then((data)=>{
         res.send(data);
     })
     .catch((err)=>{
-        res.send(err);
+        res.sendFile(__dirname + '/views/404.html');
     })
 });
 
-app.get('/lego/sets/num-demo', (req, res) => {
-    let setFound = legoData.getSetByNum('10025-1')
+app.get('/lego/sets/:num', (req, res) => {
+    let setFound = legoData.getSetByNum(req.params.num)
     setFound.then((data)=>{
         res.send(data);
     })
     .catch((err)=>{
-        res.send(err);
+        res.sendFile(__dirname + '/views/404.html');
     })
 });
 
-app.get('/lego/sets/theme-demo', (req, res) => {
-    let setFound = legoData.getSetsByTheme('9v')
-    setFound.then((data)=>{
-        res.send(data);
-    })
-    .catch((err)=>{
-        res.send(err);
-    })
+app.use((req, res, next) => {
+    res.status(404).sendFile(path.join(__dirname, './views/404.html'));
 });
