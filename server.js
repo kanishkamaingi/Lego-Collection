@@ -16,11 +16,11 @@ const express = require('express');
 const app = express(); 
 const HTTP_PORT = 8080; 
 const path = require('path');
+app.set('views', __dirname + '/views');
 require('pg'); // explicitly require the "pg" module
 const Sequelize = require('sequelize');
 
-app.listen(HTTP_PORT, () => console.log(`server listening on: ${HTTP_PORT}`));
-app.use(express.static('public'));
+app.use(express.static(__dirname + 'public'));
 
 
 app.get('/', (req, res) => {
@@ -54,3 +54,5 @@ app.get('/lego/sets/:num', (req, res) => {
 app.use((req, res, next) => {
     res.status(404).sendFile(path.join(__dirname, './views/404.html'));
 });
+
+app.listen(HTTP_PORT, () => console.log(`server listening on: ${HTTP_PORT}`));
