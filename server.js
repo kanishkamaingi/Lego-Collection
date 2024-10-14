@@ -8,7 +8,7 @@
 *
 * Name: -KANISHKA Student ID: 155238223 Date: 30-09-2024
 *
-* Published URL:
+* Published URL: https://legocollection-iota.vercel.app/
 ********************************************************************************/
 const legoData = require("./modules/legoSets");
 legoData.initialize();
