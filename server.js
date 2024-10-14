@@ -20,7 +20,7 @@ app.set('views', __dirname + '/views');
 require('pg'); // explicitly require the "pg" module
 const Sequelize = require('sequelize');
 
-app.use(express.static(__dirname + 'public'));
+app.use(express.static(path.join(__dirname + 'public')));
 
 
 app.get('/', (req, res) => {
