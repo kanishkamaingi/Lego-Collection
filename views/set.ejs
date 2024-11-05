@@ -53,9 +53,10 @@
         </div>
         <script>
             document.addEventListener("DOMContentLoaded", ()=>{
-                fetch('https://quotable.io/random')
+                fetch('http://quotable.io/random')
                 .then((value)=>value.json()) 
                 .then((data)=>{
+                    
                     document.getElementById('quote').textContent = data.content
                     document.getElementById('auth').textContent = data.author
                 })
