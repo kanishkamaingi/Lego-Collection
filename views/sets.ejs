@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lego Collection</title>
+    <link rel="stylesheet" href="/css/main.css" />
+
+</head>
+<body>
+  <%- include('partials/navbar', {page: '/lego/sets'}) %>
+
+  <div class="container mx-auto">
+    <div class="hero bg-base-200 min-h-20">
+        <div class="hero-content text-center">
+          <div class="max-w-md">
+            <h1 class="text-5xl font-bold">Collection</h1>
+            <p class="py-6">
+                Browse the entire collection!
+                <br><br>
+                <a href="/lego/sets?theme=Video Games" class="btn btn-outline btn-accent">Video Games</a>
+                <a href="/lego/sets?theme=Bionicle" class="btn btn-outline btn-secondary">Bionicle</a>
+                <a href="/lego/sets?theme=Bulk Bricks" class="btn btn-outline ">Bulk Bricks</a>
+            </p>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="table table-zebra">
+      
+      <tbody>
+        <% sets.forEach(set=>{ %>
+            <tr>
+              <td><div class="avatar">
+                <div class="w-24 rounded">
+                  <img src="<%= set.img_url %>" />
+                </div>
+              </div></td>
+              <td><%= set.name %>
+              | <a href="/lego/sets?theme=<%=set.theme%>" class="btn btn-xs btn-outline btn-primary"><%=set.theme%></a></td>
+              <td>year: <%=set.year%><br>
+                  parts: <%=set.num_parts%></td>
+              <td><a href="/lego/sets/<%=set.set_num%>"><button class="btn">Details</button></a></td>
+            </tr>
+            
+          <% }) %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<div class="navbar bg-base-100">
+  <div class="flex-1">
+    <a class="btn btn-ghost text-xl" href="/">Lego Collection</a>
+  </div>
+  <div class="flex-none">
+    <!-- Toggle button for mobile devices -->
+    <div class="dropdown dropdown-end lg:hidden">
+      <label tabindex="0" class="btn btn-ghost">
+        <!-- Hamburger icon for mobile view -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </label>
+      <!-- Dropdown menu for mobile with higher z-index -->
+      <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52" style="z-index: 1000;">
+        <li><a class="<%= (page == '/lego/sets') ? 'active' : '' %>" href="/lego/sets">View Collection</a></li>
+        <li><a class="<%= (page == '/about') ? 'active' : '' %>" href="/about">About</a></li>
+      </ul>
+    </div>
+    <!-- Horizontal menu for larger screens -->
+    <ul class="menu menu-horizontal px-1 hidden lg:flex">
+      <li><a class="<%= (page == '/lego/sets') ? 'active' : '' %>" href="/lego/sets">View Collection</a></li>
+      <li><a class="<%= (page == '/about') ? 'active' : '' %>" href="/about">About</a></li>
+    </ul>
+  </div>
+</div>
