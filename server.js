@@ -23,7 +23,7 @@ const Sequelize = require('sequelize');
 
 app.use(express.static(__dirname + '/public'));
 
-
+//route
 app.get('/', (req, res) => {
     // res.sendFile(__dirname + '/views/home.html');
     res.render("home");
