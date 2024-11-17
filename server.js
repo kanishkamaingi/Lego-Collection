@@ -20,6 +20,7 @@ app.set('views', __dirname + '/views');
 require('pg'); 
 app.set('view engine', 'ejs');
 const Sequelize = require('sequelize');
+app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/public'));
 
@@ -59,6 +60,67 @@ app.get('/lego/sets/:num', (req, res) => {
 
     })
 });
+
+app.get('/lego/addSet', (req, res) => {
+    let themesFound = legoData.getAllThemes();
+    themesFound.then((themeData)=>{
+         res.render("addSet", {themes: themeData});
+    })
+    .catch((err) => {
+        res.render("500", { message: `I'm sorry, but we have encountered the following error: ${err}` });
+    });
+    
+});
+
+app.post('/lego/addSet', (req, res) => {
+    console.log("Route /lego/addSet reached");
+    console.log("Form data:", req.body);
+    legoData.addSet(req.body)
+        .then(() => {
+            res.redirect('/lego/sets'); 
+        })
+        .catch((err) => {
+            res.render("500", { message: `I'm sorry, but we have encountered the following error: ${err}` });
+        });
+});
+
+app.get('/lego/editSet/:num', (req, res) => {
+    const setNum = req.params.num;
+
+    // Retrieve the set data by set number and all themes
+    Promise.all([legoData.getSetByNum(setNum), legoData.getAllThemes()])
+        .then(([setData, themeData]) => {
+            res.render('editSet', { themes: themeData, set: setData });
+        })
+        .catch((err) => {
+            res.status(404).render('404', { message: `Set not found: ${err}` });
+        });
+});
+
+app.post('/lego/editSet', (req, res) => {
+    const setNum = req.body.set_num; // assuming set_num is included in the form data as a hidden or readonly field
+    const setData = req.body;
+
+    legoData.editSet(setNum, setData)
+        .then(() => {
+            res.redirect('/lego/sets');
+        })
+        .catch((err) => {
+            res.render('500', { message: `I'm sorry, but we have encountered the following error: ${err}` });
+        });
+});
+
+app.get('/lego/deleteSet/:num', (req, res)=>{
+    const setNum = req.params.num;
+    legoData.deleteSet(setNum)
+    .then(()=>
+    {
+        res.redirect('/lego/sets');
+    })
+    .catch((err) => {
+        res.render('500', { message: `I'm sorry, but we have encountered the following error: ${err}` });
+    });
+})
 
 app.use((req, res, next) => {
     res.status(404).render("404", {message: "Sorry, We're unable to find what you're looking for!"});

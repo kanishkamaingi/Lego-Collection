@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500</title>
+    <link rel="stylesheet" href="/css/main.css" />
+
+</head>
+<body>
+  <%- include('partials/navbar', {page:''}) %>
+
+    <div class="hero  ">
+        <div class="hero-content flex-col lg:flex-row">
+          <img
+            src="https://media.giphy.com/media/X9QEx7PMwNELs7l4p0/giphy.gif?cid=790b76116ighq8gar0pkgr4x1r6q3h9ojcefeeqjh58vcyfj&ep=v1_gifs_search&rid=giphy.gif&ct=g"
+            class="max-w-sm rounded-lg shadow-2xl" />
+          <div class="max-w-[600px]">
+            <h1 class="align-middle text-5xl font-bold">500</h1>
+            <p class="py-6 align-middle">
+                <%=message%>
+            </p>
+          </div>
+        </div>
+      </div>
+</body>
+</html>
