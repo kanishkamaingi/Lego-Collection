@@ -8,7 +8,7 @@
 *
 * Name: -KANISHKA Student ID: 155238223 Date: 03-11-2024
 *
-* Published URL: https://assignment-4-nine-eosin.vercel.app/
+* Published URL: https://assignment-5-seven-hazel.vercel.app/
 ********************************************************************************/
 const legoData = require("./modules/legoSets");
 legoData.initialize();
