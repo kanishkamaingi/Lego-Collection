@@ -98,7 +98,7 @@ function getSetByNum(setNum) {
         })
         .then((sets) => {
             if (sets.length > 0) {
-                resolve(sets[0]); // Resolve with the first matching set
+                resolve(sets[0]); 
             } else {
                 reject('Unable to find requested set');
             }
@@ -156,7 +156,7 @@ function getAllThemes() {
         Theme.findAll()
             .then((themes) => resolve(themes))
             .catch((err) => {
-                // Rejects with a generic error message if an error occurs
+                
                 reject("Unable to retrieve themes");
             });
     });
@@ -164,16 +164,16 @@ function getAllThemes() {
 
 function editSet(set_num, setData) {
     return new Promise((resolve, reject) => {
-        // Use the Set model to find the set by set_num and update it with setData
+        
         Set.update(setData, {
             where: { set_num: set_num }
         })
         .then((result) => {
             if (result[0] === 0) {
-                // If no rows were updated, it means no matching set was found
+                
                 reject(new Error("No set found with the given set number."));
             } else {
-                // Resolve if the update was successful
+                
                 resolve();
             }
         })
