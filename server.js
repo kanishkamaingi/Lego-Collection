@@ -1,5 +1,5 @@
 /********************************************************************************
- * WEB322 – Assignment 05
+ * WEB322 – Assignment 06
 *
 * I declare that this assignment is my own work in accordance with Seneca's
 * Academic Integrity Policy:
@@ -8,7 +8,7 @@
 *
 * Name: -KANISHKA Student ID: 155238223 Date: 18-11-2024
 *
-* Published URL: https://assignment-5-seven-hazel.vercel.app/
+* Published URL: https://assignment-6-brown.vercel.app/
 ********************************************************************************/
 const authData = require("./modules/auth-service.js"); 
 const legoData = require("./modules/legoSets");
